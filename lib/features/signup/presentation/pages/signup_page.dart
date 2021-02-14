@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
+import 'package:seven__columns/features/home/presentation/pages/homepage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -110,13 +111,21 @@ class _LoginState extends State<Login> {
                                       color: Colors.amber[300],
                                       textColor: Colors.black,
                                       child: Text(
-                                        'Login',
+                                        'Sign Up',
                                         style: GoogleFonts.mcLaren(
                                           textStyle:
                                               TextStyle(letterSpacing: 2.2),
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        if (_formkey.currentState.validate()) {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => Home(),
+                                            ),
+                                          );
+                                        }
+                                      },
                                       splashColor: Colors.amberAccent,
                                     ),
                                   ],

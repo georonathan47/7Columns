@@ -14,8 +14,9 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white70,
       appBar: AppBar(
         backgroundColor: Colors.amberAccent,
-        elevation: 1.5,
-        titleSpacing: 2.0,
+        elevation: 0.5,
+        //titleSpacing: 2.0,
+        automaticallyImplyLeading: false,
         title: Text(
           'Home',
           style: GoogleFonts.mcLaren(
@@ -41,31 +42,11 @@ class _HomeState extends State<Home> {
         height: 40,
         index: 2, //sets default selected icon
         items: <Widget>[
-          Icon(
-            Icons.person,
-            size: 20,
-            color: Colors.black,
-          ),
-          Icon(
-            Icons.favorite,
-            size: 20,
-            color: Colors.black,
-          ),
-          Icon(
-            Icons.home,
-            size: 20,
-            color: Colors.black,
-          ),
-          Icon(
-            Icons.settings,
-            size: 20,
-            color: Colors.black,
-          ),
-          Icon(
-            Icons.exit_to_app,
-            size: 20,
-            color: Colors.black,
-          ),
+          Icon(Icons.person, size: 20, color: Colors.black),
+          Icon(Icons.favorite, size: 20, color: Colors.black),
+          Icon(Icons.home, size: 20, color: Colors.black),
+          Icon(Icons.settings, size: 20, color: Colors.black),
+          Icon(Icons.exit_to_app, size: 20, color: Colors.black),
         ],
         animationDuration: Duration(microseconds: 200),
         animationCurve: Curves.bounceInOut,

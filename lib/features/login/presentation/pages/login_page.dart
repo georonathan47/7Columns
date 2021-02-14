@@ -128,7 +128,13 @@ class _LoginState extends State<Login> {
                                           ),
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => Home(),
+                                            ),
+                                          );
+                                      },
                                       splashColor: Colors.amberAccent,
                                     ),
                                     //! Login button
@@ -146,11 +152,13 @@ class _LoginState extends State<Login> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => Home(),
-                                          ),
-                                        );
+                                        if (_formkey.currentState.validate()) {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => Home(),
+                                            ),
+                                          );
+                                        }
                                       },
                                       splashColor: Colors.amberAccent,
                                     ),
