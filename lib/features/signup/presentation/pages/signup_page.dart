@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -74,7 +73,7 @@ class _LoginState extends State<Login> {
                               children: <Widget>[
                                 new TextFormField(
                                   validator: (val) => val.isEmpty
-                                      ? 'Enter a registered email address'
+                                      ? 'Enter a valid email address'
                                       : null,
                                   decoration: new InputDecoration(
                                     hintText: 'Enter a valid email',
@@ -86,7 +85,7 @@ class _LoginState extends State<Login> {
                                 SizedBox(height: 15),
                                 new TextFormField(
                                   validator: (val) => val.length < 8
-                                      ? 'Enter your Password'
+                                      ? 'Enter a strong Password'
                                       : null,
                                   decoration: new InputDecoration(
                                     hintText: 'Password',
@@ -100,38 +99,10 @@ class _LoginState extends State<Login> {
                                   padding: const EdgeInsets.only(top: 20.0),
                                 ),
                                 SizedBox(height: 15),
-                                new Text(
-                                  '\t\t\t\tLogin to your account, OR \nSign Up to create a new account',
-                                  style: GoogleFonts.mcLaren(
-                                    textStyle: TextStyle(
-                                      color: Colors.amber[500],
-                                      letterSpacing: 2.5,
-                                    ),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                
+                                new Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    //! Signup button
-                                    RaisedButton(
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25),
-                                      ),
-                                      color: Colors.amber[300],
-                                      textColor: Colors.black,
-                                      child: Text(
-                                        'Sign Up',
-                                        style: GoogleFonts.mcLaren(
-                                          textStyle: TextStyle(
-                                            letterSpacing: 2.2,
-                                          ),
-                                        ),
-                                      ),
-                                      onPressed: () {},
-                                      splashColor: Colors.amberAccent,
-                                    ),
-                                    //! Login button
                                     RaisedButton(
                                       shape: new RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(25),
@@ -145,17 +116,11 @@ class _LoginState extends State<Login> {
                                               TextStyle(letterSpacing: 2.2),
                                         ),
                                       ),
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => Home(),
-                                          ),
-                                        );
-                                      },
+                                      onPressed: () {},
                                       splashColor: Colors.amberAccent,
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),

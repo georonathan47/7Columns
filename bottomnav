@@ -1,0 +1,29 @@
+return Scaffold(
+  //appBar shit //!
+  body: Container(
+    color: Colors.black,
+    height: MediaQuery.of(context).size.height, // complete height of app
+    width: MediaQuery.of(context).size.width,
+    child: Column(
+      mainAxisAlignment,
+      children: [
+
+      ]
+    ),
+  ),
+  bottomNavigationBar: CurvedNavigationBar(
+    color: Colors.amber[500],
+    backgroundColor: Colors.black87,
+    buttonBackgroundColor: Colors.amber[500],
+    height: 40,
+    index: 0, //sets default selected icon
+    items: <Widget> [
+      Icon(Icons.verified_user, size:20, color: Colors.amber,),
+    ],
+    animationDuration: Duration(microseconds: 200),
+    animationCurve: Curves.bounceInOut,
+    onTap: (index){
+      debugPrint("Current index $index");
+    }
+  ),
+);
