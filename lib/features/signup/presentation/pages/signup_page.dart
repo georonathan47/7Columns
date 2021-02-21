@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage.dart';
+import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
   @override

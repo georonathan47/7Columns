@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage.dart';
+import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -25,8 +25,8 @@ class _LoginState extends State<Login> {
                 'Login Page',
                 style: GoogleFonts.mcLaren(
                   textStyle: TextStyle(
-                    //decoration: new InputDecoration()
                     letterSpacing: 1.5,
+                    //color: Colors.white,
                   ),
                 ),
               ),
@@ -34,11 +34,12 @@ class _LoginState extends State<Login> {
                 FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text(
-                    'Logout',
+                    'Sign Up',
                     style: GoogleFonts.mcLaren(
                       textStyle: TextStyle(
                         fontSize: 18,
                         letterSpacing: 1,
+                        //color: Colors.white,
                       ),
                     ),
                   ),
