@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:seven__columns/core/usecases/auth_service.dart';
 
 import 'bottomnav.dart';
 import 'sidebar.dart';
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final AuthService _auth = AuthService();
   final String title = "";
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,9 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () async {
+              await _auth.logout();
+            },
           ),
         ],
       ),
@@ -79,8 +83,6 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-
-      
       bottomNavigationBar: BottomNav(),
     );
   }
@@ -114,22 +116,22 @@ class _CardItems extends StatelessWidget {
               //Row(
               //children: <Widget> [
               Text(
-                'Test 1234',
-                style: GoogleFonts.inter(
+                'OSAFO-OSEI Jonathan George',
+                style: GoogleFonts.mcLaren(
                   textStyle: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 26,
+                    fontSize: 22,
                   ),
                 ),
               ),
               Spacer(),
               Text(
-                '4485 **** **** 5578',
+                '04 / 2018 / 2608D',
                 style: GoogleFonts.inter(
                   textStyle: TextStyle(
                     color: Colors.white,
-                    //fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                     fontSize: 26,
                   ),
                 ),

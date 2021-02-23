@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
+import 'package:seven__columns/core/usecases/auth_service.dart';
 import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
+  final Function toggleView;
+  Login({this.toggleView});
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  final AuthService _auth = AuthService();
   bool loading = false;
   final _formkey = GlobalKey<FormState>();
+  String email = "";
+  String pass = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,9 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.toggleView();
+                  },
                 ),
               ],
             ),
@@ -87,7 +96,7 @@ class _LoginState extends State<Login> {
                                 SizedBox(height: 15),
                                 new TextFormField(
                                   validator: (val) => val.length < 8
-                                      ? 'Enter your Password'
+                                      ? 'Invaild Password, please try again'
                                       : null,
                                   decoration: new InputDecoration(
                                     hintText: 'Password',
@@ -130,11 +139,12 @@ class _LoginState extends State<Login> {
                                         ),
                                       ),
                                       onPressed: () {
+                                        // widget.toggleView();
                                         Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => Home(),
-                                            ),
-                                          );
+                                          MaterialPageRoute(
+                                            builder: (context) => Home(),
+                                          ),
+                                        );
                                       },
                                       splashColor: Colors.amberAccent,
                                     ),
@@ -152,13 +162,11 @@ class _LoginState extends State<Login> {
                                               TextStyle(letterSpacing: 2.2),
                                         ),
                                       ),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         if (_formkey.currentState.validate()) {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => Home(),
-                                            ),
-                                          );
+                                          dynamic result = await _auth
+                                              .signInWithEmailandPassword(
+                                                  email, pass);
                                         }
                                       },
                                       splashColor: Colors.amberAccent,

@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
+import 'package:seven__columns/core/usecases/auth_service.dart';
 
-class Login extends StatefulWidget {
+class SignUp extends StatefulWidget {
+  final Function toggleView;
+  SignUp({this.toggleView});
+
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   bool loading = false;
   final _formkey = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +28,9 @@ class _LoginState extends State<Login> {
               backgroundColor: Colors.amberAccent,
               elevation: 1.5,
               title: Text(
-                'Login Page',
+                'Sign Up Page',
                 style: GoogleFonts.mcLaren(
                   textStyle: TextStyle(
-                    //decoration: new InputDecoration()
                     letterSpacing: 1.5,
                   ),
                 ),
@@ -34,7 +39,7 @@ class _LoginState extends State<Login> {
                 FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text(
-                    'Logout',
+                    'Sign In',
                     style: GoogleFonts.mcLaren(
                       textStyle: TextStyle(
                         fontSize: 18,
@@ -42,7 +47,9 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.toggleView();
+                  },
                 ),
               ],
             ),
@@ -100,7 +107,6 @@ class _LoginState extends State<Login> {
                                   padding: const EdgeInsets.only(top: 20.0),
                                 ),
                                 SizedBox(height: 15),
-                                
                                 new Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -111,19 +117,20 @@ class _LoginState extends State<Login> {
                                       color: Colors.amber[300],
                                       textColor: Colors.black,
                                       child: Text(
-                                        'Sign Up',
+                                        'Register',
                                         style: GoogleFonts.mcLaren(
                                           textStyle:
                                               TextStyle(letterSpacing: 2.2),
                                         ),
                                       ),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         if (_formkey.currentState.validate()) {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => Home(),
-                                            ),
-                                          );
+                                          //
+                                          dynamic result = await _auth
+                                              .registerEmailandPassword(
+                                                  email, password);
+                                          debugPrint(password);
+                                          debugPrint(email);
                                         }
                                       },
                                       splashColor: Colors.amberAccent,
