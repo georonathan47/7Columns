@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:seven__columns/core/shared/user.dart';
+import 'package:seven__columns/core/usecases/database.dart';
 // import 'package:seven__columns/core/shared/user.dart';
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth =
+      FirebaseAuth.instance.authStateChanges() as FirebaseAuth;
 
   //! Create a user obj based on FirebaseUser
   Person _userFromFirebaseUser(user) {
@@ -12,17 +14,23 @@ class AuthService {
 
   //! auth change user stream
   Stream<Person> get user {
-    return _auth.onAuthStateChanged
-    //.map((FirebaseUser user) => _userFromFirebaseUser(user));
-    .map(_userFromFirebaseUser);
+    return _auth.authStateChanges().map(_userFromFirebaseUser);
+    //return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
   //! register with email and password
-  Future registerEmailandPassword(String email, String pass) async {
+  Future registerEmailandPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: pass);
-      FirebaseUser person = result.user;
+      //! changed from AuthResult to UserCredential
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User person = result.user;
+      // create a new document in the database for the user with the uid
+      await DatabaseService(uid: person.uid).updateUserData(
+        "", //! dummy data
+        "$email",
+        "NEW CLIENT",
+      );
       return _userFromFirebaseUser(person);
     } catch (e) {
       print(e.toString());
@@ -33,10 +41,10 @@ class AuthService {
   //! sign in with email and password
   Future signInWithEmailandPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
+      User person = result.user; //changedfrom FirebaseUser to User
+      return _userFromFirebaseUser(person);
     } catch (e) {
       print(e.toString());
       return null;

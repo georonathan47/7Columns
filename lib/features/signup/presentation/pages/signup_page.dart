@@ -17,6 +17,7 @@ class _SignUpState extends State<SignUp> {
   final AuthService _auth = AuthService();
   String email = "";
   String password = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,9 @@ class _SignUpState extends State<SignUp> {
                                     labelText: 'Enter email',
                                   ),
                                   keyboardType: TextInputType.emailAddress,
-                                  onChanged: (val) {},
+                                  onChanged: (val) {
+                                    setState(() => email = val);
+                                  },
                                 ),
                                 SizedBox(height: 15),
                                 new TextFormField(
@@ -100,7 +103,9 @@ class _SignUpState extends State<SignUp> {
                                     labelText: 'Enter pasword',
                                   ),
                                   keyboardType: TextInputType.text,
-                                  onChanged: (val) {},
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  },
                                   obscureText: true,
                                 ),
                                 new Padding(
@@ -111,6 +116,7 @@ class _SignUpState extends State<SignUp> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     RaisedButton(
+                                      //! register button
                                       shape: new RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(25),
                                       ),
@@ -125,15 +131,30 @@ class _SignUpState extends State<SignUp> {
                                       ),
                                       onPressed: () async {
                                         if (_formkey.currentState.validate()) {
-                                          //
+                                          setState(() => loading = true);
                                           dynamic result = await _auth
                                               .registerEmailandPassword(
                                                   email, password);
-                                          debugPrint(password);
-                                          debugPrint(email);
+                                          if (result == null) {
+                                            setState(() {
+                                              error =
+                                                  'Invalid email and/or password\n Please enter valid credentials';
+                                              loading = false;
+                                            });
+                                          }
                                         }
                                       },
                                       splashColor: Colors.amberAccent,
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      error,
+                                      style: GoogleFonts.mcLaren(
+                                        textStyle: TextStyle(
+                                          color: Colors.red[500],
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/shared/loading.dart';
 import 'package:seven__columns/core/usecases/auth_service.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
+// import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
   final Function toggleView;
@@ -17,7 +17,8 @@ class _LoginState extends State<Login> {
   bool loading = false;
   final _formkey = GlobalKey<FormState>();
   String email = "";
-  String pass = "";
+  String password = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -77,104 +78,138 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-                          child: Container(
-                            padding: EdgeInsets.all(50.0),
-                            child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                new TextFormField(
-                                  validator: (val) => val.isEmpty
-                                      ? 'Enter a registered email address'
-                                      : null,
-                                  decoration: new InputDecoration(
-                                    hintText: 'Enter a valid email',
-                                    labelText: 'Enter email',
-                                  ),
-                                  keyboardType: TextInputType.emailAddress,
-                                  onChanged: (val) {},
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Welcome To Our Platform",
+                                style: GoogleFonts.mcLaren(
+                                  textStyle: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white54,
+                                      letterSpacing: 1.5),
                                 ),
-                                SizedBox(height: 15),
-                                new TextFormField(
-                                  validator: (val) => val.length < 8
-                                      ? 'Invaild Password, please try again'
-                                      : null,
-                                  decoration: new InputDecoration(
-                                    hintText: 'Password',
-                                    labelText: 'Enter pasword',
-                                  ),
-                                  keyboardType: TextInputType.text,
-                                  onChanged: (val) {},
-                                  obscureText: true,
-                                ),
-                                new Padding(
-                                  padding: const EdgeInsets.only(top: 20.0),
-                                ),
-                                SizedBox(height: 15),
-                                new Text(
-                                  '\t\t\t\tLogin to your account, OR \nSign Up to create a new account',
-                                  style: GoogleFonts.mcLaren(
-                                    textStyle: TextStyle(
-                                      color: Colors.amber[500],
-                                      letterSpacing: 2.5,
-                                    ),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(50.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    //! Signup button
-                                    RaisedButton(
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25),
+                                    new TextFormField(
+                                      validator: (val) => val.isEmpty
+                                          ? 'Enter a registered email address'
+                                          : null,
+                                      decoration: new InputDecoration(
+                                        hintText: 'Enter a valid email',
+                                        labelText: 'Enter email',
                                       ),
-                                      color: Colors.amber[300],
-                                      textColor: Colors.black,
-                                      child: Text(
-                                        'Sign Up',
-                                        style: GoogleFonts.mcLaren(
-                                          textStyle: TextStyle(
-                                            letterSpacing: 2.2,
-                                          ),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        // widget.toggleView();
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => Home(),
-                                          ),
-                                        );
-                                      },
-                                      splashColor: Colors.amberAccent,
+                                      keyboardType: TextInputType.emailAddress,
+                                      onChanged: (val) {},
                                     ),
-                                    //! Login button
-                                    RaisedButton(
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25),
+                                    SizedBox(height: 15),
+                                    new TextFormField(
+                                      validator: (val) => val.length < 8
+                                          ? 'Invaild Password, please try again'
+                                          : null,
+                                      decoration: new InputDecoration(
+                                        hintText: 'Password',
+                                        labelText: 'Enter pasword',
                                       ),
-                                      color: Colors.amber[300],
-                                      textColor: Colors.black,
-                                      child: Text(
-                                        'Login',
-                                        style: GoogleFonts.mcLaren(
-                                          textStyle:
-                                              TextStyle(letterSpacing: 2.2),
+                                      keyboardType: TextInputType.text,
+                                      onChanged: (val) {},
+                                      obscureText: true,
+                                    ),
+                                    new Padding(
+                                      padding: const EdgeInsets.only(top: 20.0),
+                                    ),
+                                    SizedBox(height: 15),
+                                    new Text(
+                                      '\t\t\t\tLogin to your account, OR \nSign Up to create a new account',
+                                      style: GoogleFonts.mcLaren(
+                                        textStyle: TextStyle(
+                                          color: Colors.amber[500],
+                                          letterSpacing: 2.5,
                                         ),
                                       ),
-                                      onPressed: () async {
-                                        if (_formkey.currentState.validate()) {
-                                          dynamic result = await _auth
-                                              .signInWithEmailandPassword(
-                                                  email, pass);
-                                        }
-                                      },
-                                      splashColor: Colors.amberAccent,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        //! Signup button
+                                        RaisedButton(
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                          ),
+                                          color: Colors.amber[300],
+                                          textColor: Colors.black,
+                                          child: Text(
+                                            'Sign Up',
+                                            style: GoogleFonts.mcLaren(
+                                              textStyle: TextStyle(
+                                                letterSpacing: 2.2,
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            widget.toggleView();
+                                          },
+                                          splashColor: Colors.amberAccent,
+                                        ),
+                                        //! Login button
+                                        RaisedButton(
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                          ),
+                                          color: Colors.amber[300],
+                                          textColor: Colors.black,
+                                          child: Text(
+                                            'Login',
+                                            style: GoogleFonts.mcLaren(
+                                              textStyle:
+                                                  TextStyle(letterSpacing: 2.2),
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            if (_formkey.currentState
+                                                .validate()) {
+                                              setState(() => loading = true);
+                                              dynamic result = await _auth
+                                                  .signInWithEmailandPassword(
+                                                      email, password);
+                                              if (result == null) {
+                                                setState(
+                                                  () {
+                                                    loading = false;
+                                                    error =
+                                                        'Invalid email and/or password \n Please enter valid credentials';
+                                                  },
+                                                );
+                                              }
+                                            }
+                                          },
+                                          splashColor: Colors.amberAccent,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 45,
+                                    ),
+                                    Text(
+                                      error,
+                                      style: GoogleFonts.mcLaren(
+                                        textStyle: TextStyle(
+                                          color: Colors.red[500],
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ],
-                                )
-                              ],
-                            ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
