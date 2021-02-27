@@ -1,15 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:seven__columns/core/shared/wrapper.dart';
-import 'package:seven__columns/core/usecases/auth_service.dart';
-import 'core/shared/user.dart';
 
-void main() {
+import 'core/shared/user.dart';
+import 'core/shared/wrapper.dart';
+import 'core/usecases/auth_service.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return StreamProvider<Person>.value(

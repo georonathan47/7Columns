@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:seven__columns/core/usecases/auth_service.dart';
 import 'package:provider/provider.dart';
-import 'package:seven__columns/core/usecases/database.dart';
 
+import '../../../../core/usecases/auth_service.dart';
+import '../../../../core/usecases/database.dart';
 import 'bottomnav.dart';
-import 'client_list.dart';
+//import 'client_list.dart';
 import 'sidebar.dart';
 
 class Home extends StatefulWidget {
@@ -27,8 +27,6 @@ class _HomeState extends State<Home> {
           //centerTitle: true,
           backgroundColor: Colors.amberAccent,
           elevation: 0.5,
-          //titleSpacing: 2.0,
-          //automaticallyImplyLeading: false,
           title: Text(
             "Home",
             style: GoogleFonts.mcLaren(
@@ -79,7 +77,8 @@ class _HomeState extends State<Home> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return ClientList();
+                    //return ClientList();
+                    return Container();
                   },
                 ),
               ),
@@ -91,61 +90,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-// class _CardItems extends StatelessWidget {
-//   final Color color;
-//   const _CardItems({Key key, this.color}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.all(7.5),
-//       child: Container(
-//         width: double.infinity,
-//         height: 160,
-//         decoration: BoxDecoration(
-//           gradient: LinearGradient(
-//             colors: [
-//               color.withOpacity(0.25),
-//               color,
-//             ],
-//           ),
-//           borderRadius: BorderRadius.circular(20),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.all(18.0),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.stretch,
-//             children: <Widget>[
-//               //Row(
-//               //children: <Widget> [
-//               Text(
-//                 'OSAFO-OSEI Jonathan George',
-//                 style: GoogleFonts.mcLaren(
-//                   textStyle: TextStyle(
-//                     color: Colors.white,
-//                     fontWeight: FontWeight.bold,
-//                     fontSize: 22,
-//                   ),
-//                 ),
-//               ),
-//               Spacer(),
-//               Text(
-//                 '04 / 2018 / 2608D',
-//                 style: GoogleFonts.inter(
-//                   textStyle: TextStyle(
-//                     color: Colors.white,
-//                     fontWeight: FontWeight.bold,
-//                     fontSize: 26,
-//                   ),
-//                 ),
-//               ),
-//               //],
-//               //),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

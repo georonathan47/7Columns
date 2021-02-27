@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:seven__columns/core/shared/clients.dart';
 
 class DatabaseService {
   final String uid;
@@ -13,6 +14,18 @@ class DatabaseService {
       'name': name,
       'email': email,
       'contact': contact,
+    });
+  }
+
+  // Client list from snapshot
+  // ignore: unused_element
+  List<Client> _clientListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Client(
+        contact: doc.data ?? '',
+        email: doc.data ?? '',
+        name: doc.data ?? 'New Member',
+      );
     });
   }
 

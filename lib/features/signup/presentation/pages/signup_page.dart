@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/core/usecases/auth_service.dart';
+import '../../../../core/shared/loading.dart';
+import '../../../../core/usecases/auth_service.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggleView;
@@ -75,91 +75,109 @@ class _SignUpState extends State<SignUp> {
                               ),
                             ),
                           ),
-                          child: Container(
-                            padding: EdgeInsets.all(50.0),
-                            child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                new TextFormField(
-                                  validator: (val) => val.isEmpty
-                                      ? 'Enter a valid email address'
-                                      : null,
-                                  decoration: new InputDecoration(
-                                    hintText: 'Enter a valid email',
-                                    labelText: 'Enter email',
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Welcome To Our Platform",
+                                style: GoogleFonts.mcLaren(
+                                  textStyle: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white54,
+                                    letterSpacing: 1.5,
                                   ),
-                                  keyboardType: TextInputType.emailAddress,
-                                  onChanged: (val) {
-                                    setState(() => email = val);
-                                  },
                                 ),
-                                SizedBox(height: 15),
-                                new TextFormField(
-                                  validator: (val) => val.length < 8
-                                      ? 'Enter a strong Password'
-                                      : null,
-                                  decoration: new InputDecoration(
-                                    hintText: 'Password',
-                                    labelText: 'Enter pasword',
-                                  ),
-                                  keyboardType: TextInputType.text,
-                                  onChanged: (val) {
-                                    setState(() => password = val);
-                                  },
-                                  obscureText: true,
-                                ),
-                                new Padding(
-                                  padding: const EdgeInsets.only(top: 20.0),
-                                ),
-                                SizedBox(height: 15),
-                                new Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(50.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    RaisedButton(
-                                      //! register button
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25),
+                                    new TextFormField(
+                                      validator: (val) => val.isEmpty
+                                          ? 'Enter a valid email address'
+                                          : null,
+                                      decoration: new InputDecoration(
+                                        hintText: 'Enter a valid email',
+                                        labelText: 'Enter email',
                                       ),
-                                      color: Colors.amber[300],
-                                      textColor: Colors.black,
-                                      child: Text(
-                                        'Register',
-                                        style: GoogleFonts.mcLaren(
-                                          textStyle:
-                                              TextStyle(letterSpacing: 2.2),
-                                        ),
-                                      ),
-                                      onPressed: () async {
-                                        if (_formkey.currentState.validate()) {
-                                          setState(() => loading = true);
-                                          dynamic result = await _auth
-                                              .registerEmailandPassword(
-                                                  email, password);
-                                          if (result == null) {
-                                            setState(() {
-                                              error =
-                                                  'Invalid email and/or password\n Please enter valid credentials';
-                                              loading = false;
-                                            });
-                                          }
-                                        }
+                                      keyboardType: TextInputType.emailAddress,
+                                      onChanged: (val) {
+                                        setState(() => email = val);
                                       },
-                                      splashColor: Colors.amberAccent,
                                     ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      error,
-                                      style: GoogleFonts.mcLaren(
-                                        textStyle: TextStyle(
-                                          color: Colors.red[500],
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    SizedBox(height: 15),
+                                    new TextFormField(
+                                      validator: (val) => val.length < 8
+                                          ? 'Enter a strong Password'
+                                          : null,
+                                      decoration: new InputDecoration(
+                                        hintText: 'Password',
+                                        labelText: 'Enter pasword',
                                       ),
+                                      keyboardType: TextInputType.text,
+                                      onChanged: (val) {
+                                        setState(() => password = val);
+                                      },
+                                      obscureText: true,
+                                    ),
+                                    new Padding(
+                                      padding: const EdgeInsets.only(top: 20.0),
+                                    ),
+                                    SizedBox(height: 15),
+                                    new Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        RaisedButton(
+                                          //! register button
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                          ),
+                                          color: Colors.amber[300],
+                                          textColor: Colors.black,
+                                          child: Text(
+                                            'Register',
+                                            style: GoogleFonts.mcLaren(
+                                              textStyle:
+                                                  TextStyle(letterSpacing: 2.2),
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            if (_formkey.currentState
+                                                .validate()) {
+                                              setState(() => loading = true);
+                                              dynamic result = await _auth
+                                                  .registerEmailandPassword(
+                                                      email, password);
+                                              if (result == null) {
+                                                setState(() => error =
+                                                        'Invalid email and/or password\n Please enter valid credentials'
+                                                    // loading = false;
+                                                    );
+                                                setState(() => loading = false);
+                                              }
+                                            }
+                                          },
+                                          splashColor: Colors.amberAccent,
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          error,
+                                          style: GoogleFonts.mcLaren(
+                                            textStyle: TextStyle(
+                                              color: Colors.red[500],
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

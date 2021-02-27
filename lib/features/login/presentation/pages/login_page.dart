@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:seven__columns/core/shared/loading.dart';
-import 'package:seven__columns/core/usecases/auth_service.dart';
+
+import '../../../../core/shared/loading.dart';
+import '../../../../core/usecases/auth_service.dart';
 // import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
@@ -84,10 +85,11 @@ class _LoginState extends State<Login> {
                                 "Welcome To Our Platform",
                                 style: GoogleFonts.mcLaren(
                                   textStyle: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white54,
-                                      letterSpacing: 1.5),
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white54,
+                                    letterSpacing: 1.5,
+                                  ),
                                 ),
                               ),
                               Container(

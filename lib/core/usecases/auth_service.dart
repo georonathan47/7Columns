@@ -4,8 +4,7 @@ import 'package:seven__columns/core/usecases/database.dart';
 // import 'package:seven__columns/core/shared/user.dart';
 
 class AuthService {
-  final FirebaseAuth _auth =
-      FirebaseAuth.instance.authStateChanges() as FirebaseAuth;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //! Create a user obj based on FirebaseUser
   Person _userFromFirebaseUser(user) {
@@ -25,9 +24,10 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User person = result.user;
+      
       // create a new document in the database for the user with the uid
       await DatabaseService(uid: person.uid).updateUserData(
-        "", //! dummy data
+        "7Columns", //! dummy data
         "$email",
         "NEW CLIENT",
       );
