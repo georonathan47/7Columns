@@ -11,9 +11,9 @@ class _ClientListState extends State<ClientList> {
   @override
   Widget build(BuildContext context) {
     final clients = Provider.of<QuerySnapshot>(context);
-    for (var doc in clients.docs) {
-      print(doc.data);
-    }
+    // for (var doc in clients.docs) {
+    //   print(doc.data);
+    // }
     return Container();
   }
 }

@@ -9,7 +9,7 @@ class DatabaseService {
   final CollectionReference clientCollection =
       FirebaseFirestore.instance.collection('clients');
 
-  Future updateUserData(String name, String email, String contact) async {
+  Future updateUserData(String name, String email, int contact) async {
     return await clientCollection.doc(uid).set({
       'name': name,
       'email': email,
@@ -22,9 +22,9 @@ class DatabaseService {
   List<Client> _clientListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Client(
-        contact: doc.data ?? '',
-        email: doc.data ?? '',
-        name: doc.data ?? 'New Member',
+        contact: doc.data() ?? '',
+        email: doc.data() ?? '',
+        name: doc.data() ?? 'New Member',
       );
     });
   }

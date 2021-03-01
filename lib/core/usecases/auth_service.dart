@@ -29,7 +29,7 @@ class AuthService {
       await DatabaseService(uid: person.uid).updateUserData(
         "7Columns", //! dummy data
         "$email",
-        "NEW CLIENT",
+        233,
       );
       return _userFromFirebaseUser(person);
     } catch (e) {

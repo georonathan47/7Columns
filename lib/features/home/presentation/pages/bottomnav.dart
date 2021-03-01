@@ -7,6 +7,8 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
+  String title = "";
+
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
@@ -45,12 +47,23 @@ class _BottomNavState extends State<BottomNav> {
           Icons.settings,
           size: 20,
           color: Colors.white,
-        ), 
+        ),
       ],
       animationDuration: Duration(microseconds: 200),
       animationCurve: Curves.bounceInOut,
       onTap: (index) {
         debugPrint("Current index $index");
+        if (index == 0) {
+          setState(() => title = "Architects");
+        } else if (index == 1) {
+          setState(() => title = "Favorites");
+        } else if (index == 2) {
+          setState(() => title = "Home");
+        } else if (index == 3) {
+          setState(() => title = "Reviews");
+        } else {
+          setState(() => title = "Settings");
+        }
       },
     );
   }

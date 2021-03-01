@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
 import '../../../../core/usecases/database.dart';
 import 'bottomnav.dart';
-//import 'client_list.dart';
+import 'client_list.dart';
 import 'sidebar.dart';
 
 class Home extends StatefulWidget {
@@ -17,18 +18,20 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   final String title = "";
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<QuerySnapshot>.value(
       value: DatabaseService().clients,
-      child: Scaffold(
+      child: loading ? Loading() : Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
           //centerTitle: true,
           backgroundColor: Colors.amberAccent,
           elevation: 0.5,
           title: Text(
-            "Home",
+            title,
             style: GoogleFonts.mcLaren(
               textStyle: TextStyle(
                 letterSpacing: 1.5,
@@ -58,31 +61,33 @@ class _HomeState extends State<Home> {
         drawer: Sidebar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text(
-                "Sample Designs",
-                style: GoogleFonts.mcLaren(
-                  textStyle: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  "Sample Designs",
+                  style: GoogleFonts.mcLaren(
+                    textStyle: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    //return ClientList();
-                    return Container();
-                  },
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-            ],
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ClientList();
+                      //return Container();
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNav(),
