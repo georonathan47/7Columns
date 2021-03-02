@@ -18,11 +18,10 @@ class DatabaseService {
   }
 
   // Client list from snapshot
-  // ignore: unused_element
   List<Client> _clientListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Client(
-        contact: doc.data() ?? '',
+        contact: doc.data() ?? '233',
         email: doc.data() ?? '',
         name: doc.data() ?? 'New Member',
       );
@@ -30,7 +29,8 @@ class DatabaseService {
   }
 
   // get ClientInfo stream
-  Stream<QuerySnapshot> get clients {
-    return clientCollection.snapshots();
+  Stream<List<Client>> get clients {
+    return clientCollection.snapshots()
+      .map(_clientListFromSnapshot);
   }
 }

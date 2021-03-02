@@ -1,6 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../core/shared/clients.dart';
+import 'client_tile.dart';
 
 class ClientList extends StatefulWidget {
   @override
@@ -10,10 +12,13 @@ class ClientList extends StatefulWidget {
 class _ClientListState extends State<ClientList> {
   @override
   Widget build(BuildContext context) {
-    final clients = Provider.of<QuerySnapshot>(context);
-    // for (var doc in clients.docs) {
-    //   print(doc.data);
-    // }
-    return Container();
+    final clients = Provider.of<List<Client>>(context);
+
+    return ListView.builder(
+      itemCount: clients.length,
+      itemBuilder: (context, index) {
+        return ClientTile();
+      },
+    );
   }
 }

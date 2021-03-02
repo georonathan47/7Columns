@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//import '../../../../core/shared/loading.dart';
+import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
 //import '../../../home/presentation/pages/homepage_main.dart';
 
@@ -23,9 +23,9 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return /*loading
+    return loading
         ? Loading()
-        :*/
+        :
         Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -147,16 +147,16 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                     onPressed: () async {
                                       if (_formkey.currentState.validate()) {
-                                        //setState(() => loading = true);
+                                        setState(() => loading = true);
                                         dynamic result = await _auth
                                             .registerEmailandPassword(
                                                 email, password);
                                         if (result == null) {
                                           setState(() => error =
                                                   'Invalid email and/or password\n Please enter valid credentials'
-                                              // loading = false;
+                                               //loading = false;
                                               );
-                                          //setState(() => loading = false);
+                                          setState(() => loading = false);
                                         }
                                       }
                                     },
