@@ -15,9 +15,18 @@ class _ClientListState extends State<ClientList> {
     final clients = Provider.of<List<Client>>(context);
 
     return ListView.builder(
-      itemCount: clients.length,
+      itemCount: clients?.length ?? 0,
       itemBuilder: (context, index) {
-        return ClientTile();
+        //! if (index > 0) {
+        //!   List clients = index.client;
+        //! }
+        return Column(
+          children: <Widget>[
+            ClientTile(
+              client: clients[index],
+            ),
+          ],
+        );
       },
     );
   }

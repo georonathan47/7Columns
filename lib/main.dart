@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
 
 import 'core/shared/user.dart';
-//import 'core/shared/wrapper.dart';
+import 'core/shared/wrapper.dart';
 import 'core/usecases/auth_service.dart';
 
 void main() async{
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.amber,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Home(),//Wrapper(),
+        home: /*Home(),*/Wrapper(),
       ),
     );
   }

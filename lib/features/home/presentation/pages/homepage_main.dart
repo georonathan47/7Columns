@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Client>>.value(
-      value: DatabaseService().clients,
+      value:  DatabaseService().clients,
       child: loading
           ? Loading()
           : Scaffold(
@@ -82,6 +82,7 @@ class _HomeState extends State<Home> {
                         height: 10,
                       ),
                       Expanded(
+                        
                         child: ClientList(),
                       ),
                     ],
