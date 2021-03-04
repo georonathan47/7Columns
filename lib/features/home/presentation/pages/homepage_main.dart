@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Client>>.value(
-      value:  DatabaseService().clients,
+      value: DatabaseService().clients,
       child: loading
           ? Loading()
           : Scaffold(
@@ -50,7 +50,6 @@ class _HomeState extends State<Home> {
                         textStyle: TextStyle(
                           fontSize: 18,
                           letterSpacing: 1,
-                          //color: Colors.white,
                         ),
                       ),
                     ),
@@ -64,7 +63,7 @@ class _HomeState extends State<Home> {
               body: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                child: Center(
+                child: Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -82,7 +81,6 @@ class _HomeState extends State<Home> {
                         height: 10,
                       ),
                       Expanded(
-                        
                         child: ClientList(),
                       ),
                     ],

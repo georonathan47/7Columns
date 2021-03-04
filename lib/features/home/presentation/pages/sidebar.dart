@@ -14,7 +14,7 @@ class _SidebarState extends State<Sidebar> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
+            color: Colors.amber[600],
           ),
         ],
       ),
