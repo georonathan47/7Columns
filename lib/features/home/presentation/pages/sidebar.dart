@@ -73,7 +73,7 @@ class _SidebarState extends State<Sidebar> {
               ListView(
                 children: [
                   Column(
-                    children: [
+                    children: <Widget> [
                       ListTile(
                         leading: Icon(Icons.person),
                         title: Text(
@@ -86,8 +86,8 @@ class _SidebarState extends State<Sidebar> {
                           Navigator.of(context).pop();
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              //builder: (context) => Profile(),
-                            ),
+                                //builder: (context) => Profile(),
+                                ),
                           );
                         },
                       ),
@@ -104,8 +104,8 @@ class _SidebarState extends State<Sidebar> {
                             Navigator.of(context).pop();
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                               // builder: (context) => Contact(), //Login(),
-                              ),
+                                  // builder: (context) => Contact(), //Login(),
+                                  ),
                             );
                           }),
                       ListTile(
@@ -143,8 +143,8 @@ class _SidebarState extends State<Sidebar> {
                           Navigator.of(context).pop();
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                             // builder: (context) => Settings(),
-                            ),
+                                // builder: (context) => Settings(),
+                                ),
                           );
                         },
                       ),

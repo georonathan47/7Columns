@@ -40,7 +40,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/7Columns.png"
+  image_path: "assets/7Columns.jpg"
 
 flutter:
   uses-material-design: true
