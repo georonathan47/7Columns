@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seven__columns/core/usecases/auth_service.dart';
+
+import '../../../../core/usecases/auth_service.dart';
+import '../../../settings/presentation/pages/edit_profile.dart';
 
 class Sidebar extends StatefulWidget {
   @override
@@ -44,7 +46,7 @@ class _SidebarState extends State<Sidebar> {
                     ],
                     image: DecorationImage(
                       image: new AssetImage(
-                        "",
+                        "jonathan.jpg",
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -73,7 +75,7 @@ class _SidebarState extends State<Sidebar> {
               ListView(
                 children: [
                   Column(
-                    children: <Widget> [
+                    children: <Widget>[
                       ListTile(
                         leading: Icon(Icons.person),
                         title: Text(
@@ -86,28 +88,29 @@ class _SidebarState extends State<Sidebar> {
                           Navigator.of(context).pop();
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                                //builder: (context) => Profile(),
-                                ),
+                              builder: (context) => Profile(),
+                            ),
                           );
                         },
                       ),
                       ListTile(
-                          leading: Icon(Icons.phone),
-                          title: Text(
-                            'Contact Us',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
+                        leading: Icon(Icons.phone),
+                        title: Text(
+                          'Contact Us',
+                          style: TextStyle(
+                            fontSize: 18,
                           ),
-                          onTap: () {
-                            //!page navigations
-                            Navigator.of(context).pop();
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  // builder: (context) => Contact(), //Login(),
-                                  ),
-                            );
-                          }),
+                        ),
+                        onTap: () {
+                          //!page navigations
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                // builder: (context) => Contact(),
+                                ),
+                          );
+                        },
+                      ),
                       ListTile(
                         leading: Icon(Icons.arrow_back),
                         title: Text(
@@ -118,7 +121,6 @@ class _SidebarState extends State<Sidebar> {
                         ),
                         onTap: () async {
                           await _auth.logout();
-                          // this.toggleView();
                         },
                       ),
                       ListTile(
@@ -151,7 +153,7 @@ class _SidebarState extends State<Sidebar> {
                       SizedBox(
                         height: 310,
                       ),
-                      Text(
+                      const Text(
                         'Version 1.0.0',
                         style: TextStyle(
                           color: Colors.grey,
