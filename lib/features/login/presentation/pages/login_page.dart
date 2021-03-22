@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               actions: <Widget>[
-                FlatButton.icon(
+                TextButton.icon(
                   icon: Icon(Icons.person),
                   label: Text(
                     'Sign Up',
@@ -139,39 +139,43 @@ class _LoginState extends State<Login> {
                                           MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
                                         //! Signup button
-                                        RaisedButton(
-                                          shape: new RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            //onPrimary: Colors.amber[300],
                                           ),
-                                          color: Colors.amber[300],
-                                          textColor: Colors.black,
                                           child: Text(
                                             'Sign Up',
                                             style: GoogleFonts.mcLaren(
                                               textStyle: TextStyle(
                                                 letterSpacing: 2.2,
+                                                color: Colors.black,
                                               ),
                                             ),
                                           ),
                                           onPressed: () {
                                             widget.toggleView();
                                           },
-                                          splashColor: Colors.amberAccent,
                                         ),
                                         //! Login button
-                                        RaisedButton(
-                                          shape: new RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            primary: Colors.amber[300],
                                           ),
-                                          color: Colors.amber[300],
-                                          textColor: Colors.black,
                                           child: Text(
                                             'Login',
                                             style: GoogleFonts.mcLaren(
-                                              textStyle:
-                                                  TextStyle(letterSpacing: 2.2),
+                                              textStyle: TextStyle(
+                                                letterSpacing: 2.2,
+                                                color: Colors.black,
+                                              ),
                                             ),
                                           ),
                                           onPressed: () async {
@@ -192,7 +196,6 @@ class _LoginState extends State<Login> {
                                               }
                                             }
                                           },
-                                          splashColor: Colors.amberAccent,
                                         ),
                                       ],
                                     ),

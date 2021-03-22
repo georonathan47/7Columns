@@ -28,9 +28,7 @@ class ClientTile extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
-                          'https://photos.google.com/search/_m8_Favorites/photo/AF1QipNVWvco5i5xWZd6IxkSBclh2uhIwsB2SpwWR14',
-                        ),
+                        image: AssetImage("assets/esther.jpg"),
                         fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.all(

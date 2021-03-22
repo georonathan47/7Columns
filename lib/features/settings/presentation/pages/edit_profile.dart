@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:seven__columns/core/usecases/database.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -106,44 +107,48 @@ class _ProfileState extends State<Profile> {
               SizedBox(
                 height: 35,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlineButton(
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "CANCEL",
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 2.2,
-                        color: Colors.red[300],
-                      ),
-                    ),
-                  ),
-                  RaisedButton(
-                    onPressed: () async {},
-                    color: Colors.amber[700],
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
-                      "SAVE",
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 2.2,
-                        color: Colors.white,
-                      ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "CANCEL",
+                    style: TextStyle(
+                      fontSize: 14,
+                      letterSpacing: 2.2,
+                      color: Colors.red[250],
                     ),
                   ),
-                ]
-              ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await DatabaseService(/*uid: person.uid*/).updateUserData(
+                      "",
+                      "",
+                      233,
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    primary: Colors.green[250], //!elevatedButton background
+                  ),
+                  child: Text(
+                    "SAVE",
+                    style: TextStyle(
+                      fontSize: 14,
+                      letterSpacing: 2.2,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ]),
             ],
           ),
         ),
@@ -163,8 +168,8 @@ Widget buildTextField(
         suffixIcon: isPasswordTextField
             ? IconButton(
                 onPressed: () {
-                  setState((_) => 
-                    showPassword = !showPassword,
+                  setState(
+                    (_) => showPassword = !showPassword,
                   );
                 },
                 icon: Icon(

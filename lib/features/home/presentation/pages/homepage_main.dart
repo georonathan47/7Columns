@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 actions: <Widget>[
-                  FlatButton.icon(
+                  TextButton.icon(
                     icon: Icon(Icons.exit_to_app),
                     label: Text(
                       'Logout',
