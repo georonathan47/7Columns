@@ -3,169 +3,142 @@ import 'package:flutter/material.dart';
 import '../../../../core/usecases/auth_service.dart';
 import '../../../settings/presentation/pages/edit_profile.dart';
 
-class Sidebar extends StatefulWidget {
-  @override
-  _SidebarState createState() => _SidebarState();
-}
-
-class _SidebarState extends State<Sidebar> {
+class Sidebar extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child: ListView(
+        padding: EdgeInsets.zero,
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Colors.amber[600],
-          ),
-          Center(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: 100,
-                  height: 100,
-                  margin: EdgeInsets.only(
-                    top: 30,
-                    bottom: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 0.5,
-                      color: Colors.amberAccent,
+          UserAccountsDrawerHeader(
+            accountName: Text("georonathan47"),
+            accountEmail: Text("Nathan James"),
+            currentAccountPicture: CircleAvatar(
+              child: ClipOval(
+                child: Stack(
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/jonathan.jpg",
+                      width: 90,
+                      height: 90,
+                      fit: BoxFit.cover,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 10,
-                        spreadRadius: 3,
-                        color: Colors.amber[600].withOpacity(0.8),
-                        offset: Offset(0, 15),
+                    SizedBox(height: 2),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          color: Colors.amber[400],
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.edit),
+                          color: Colors.black,
+                          onPressed: () {},
+                        ),
                       ),
-                    ],
-                    image: DecorationImage(
-                      image: new AssetImage(
-                        "jonathan.jpg",
-                      ),
-                      fit: BoxFit.fill,
                     ),
-                  ),
+                  ],
                 ),
-                Text(
-                  //!This field will be the name of the user in Version 1.0
-                  'New Client',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.amber[300],
-                  ),
-                ),
-                Text(
-                  //!This field will be the email of the user in Version 1.0
-                  'example@dev.com',
-                  style: TextStyle(
-                    color: Colors.amber[300],
-                  ),
-                ),
-              ],
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.amber[250],
+              image: DecorationImage(
+                image: AssetImage("assets/pesuedo.jpg"),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          new Column(
-            children: <Widget>[
-              ListView(
-                children: [
-                  Column(
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(Icons.person),
-                        title: Text(
-                          'Profile',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Profile(),
-                            ),
-                          );
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.phone),
-                        title: Text(
-                          'Contact Us',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        onTap: () {
-                          //!page navigations
-                          Navigator.of(context).pop();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                // builder: (context) => Contact(),
-                                ),
-                          );
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.arrow_back),
-                        title: Text(
-                          'Logout',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        onTap: () async {
-                          await _auth.logout();
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.question_answer),
-                        title: Text(
-                          "FAQs",
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text(
-                          'Settings',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                // builder: (context) => Settings(),
-                                ),
-                          );
-                        },
-                      ),
-                      SizedBox(
-                        height: 310,
-                      ),
-                      const Text(
-                        'Version 1.0.0',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
+          ListTile(
+            leading: Icon(Icons.person_outlined),
+            title: Text(
+              "Profile",
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Profile(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.favorite_outline_outlined),
+            title: Text(
+              "Favourites",
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.share_outlined),
+            title: Text(
+              "Share",
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () {},
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.settings_outlined),
+            title: Text(
+              "Settings",
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.notifications_outlined),
+            title: Text(
+              "Alerts",
+              style: TextStyle(fontSize: 20),
+            ),
+            trailing: ClipOval(
+              child: Container(
+                color: Colors.red[300],
+                width: 30,
+                height: 30,
+                child: Center(
+                  child: Text(
+                    "9+",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                ],
+                ),
               ),
-            ],
+            ),
+            onTap: () {},
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.exit_to_app_outlined),
+            title: Text(
+              "Logout",
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () async {
+              await _auth.logout();
+            },
+          ),
+          SizedBox(height: 250),
+          Center(
+            child: const Text(
+              "Version Prototype",
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "mcLaren-Bold",
+              ),
+            ),
           ),
         ],
       ),

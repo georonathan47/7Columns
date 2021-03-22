@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seven__columns/core/usecases/database.dart';
 
-class Profile extends StatefulWidget {
-  @override
-  _ProfileState createState() => _ProfileState();
-}
+// ignore: must_be_immutable
+class Profile extends StatelessWidget {
+//   @override
+//   _ProfileState createState() => _ProfileState();
+// }
 
-class _ProfileState extends State<Profile> {
+// class _ProfileState extends State<Profile> {
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -192,4 +193,7 @@ Widget buildTextField(
   );
 }
 
-void setState(bool Function(_ProfileState) param0) {}
+void setState(bool Function(State) param0) {
+}
+
+//void setState(bool Function(_ProfileState) param0) {}
