@@ -40,13 +40,14 @@ class _SignUpState extends State<SignUp> {
               ),
               actions: <Widget>[
                 TextButton.icon(
-                  icon: Icon(Icons.person),
+                  icon: Icon(Icons.person, color: Colors.black),
                   label: Text(
                     'Sign In',
                     style: GoogleFonts.mcLaren(
                       textStyle: TextStyle(
                         fontSize: 18,
                         letterSpacing: 1,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -84,7 +85,7 @@ class _SignUpState extends State<SignUp> {
                                 style: GoogleFonts.mcLaren(
                                   textStyle: TextStyle(
                                     fontSize: 25,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.white54,
                                     letterSpacing: 1.5,
                                   ),

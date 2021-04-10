@@ -22,10 +22,13 @@ dependencies:
   firebase_auth:   
   firebase_core: ^0.7.0
   firebase: ^8.0.0
+
+  path_provider: 
   provider: ^4.3.3
   
   shared_preferences: ^0.5.12+4
   curved_navigation_bar: 
+  image_picker: 
   #connectivity: ^2.0.2
   #http: ^0.12.2
   #get_it: ^5.0.6

@@ -1,5 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../../../settings/presentation/pages/settings.dart';
+//import '../../../../core/usecases/auth_service.dart';
+
+import 'homepage_main.dart';
 //import 'homepage_main.dart';
 
 class BottomNav extends StatefulWidget {
@@ -8,7 +13,7 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  String title = "";
+  //final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +57,25 @@ class _BottomNavState extends State<BottomNav> {
       ],
       animationDuration: Duration(microseconds: 200),
       animationCurve: Curves.bounceInOut,
-      onTap: (index) {
-        debugPrint("Current index $index");
+      onTap: (index) async {
+        debugPrint("Current index: $index");
         if (index == 0) {
-          setState(() => title = "Architects");
+          //setState(() => Home.title = "Architects");
         } else if (index == 1) {
-          setState(() => title = "Favorites");
         } else if (index == 2) {
-          setState(() => title = "Home");
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Home(),
+            ),
+          );
         } else if (index == 3) {
-          setState(() => title = "Reviews");
+          //setState(() => Home.title = "Reviews");
         } else {
-          setState(() => title = "Settings");
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Settings(),
+            ),
+          );
         }
       },
     );

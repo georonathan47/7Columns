@@ -8,6 +8,7 @@ import '../../../../core/usecases/auth_service.dart';
 import '../../../../core/usecases/database.dart';
 import 'bottomnav.dart';
 import 'client_list.dart';
+import 'client_tile.dart';
 import 'sidebar.dart';
 
 class Home extends StatefulWidget {
@@ -17,7 +18,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
-  final String title = "";
   bool loading = false;
 
   @override
@@ -27,13 +27,13 @@ class _HomeState extends State<Home> {
       child: loading
           ? Loading()
           : Scaffold(
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.white54,
               appBar: AppBar(
                 //centerTitle: true,
                 backgroundColor: Colors.amberAccent,
                 elevation: 0.5,
                 title: Text(
-                  title,
+                  "Home",
                   style: GoogleFonts.mcLaren(
                     textStyle: TextStyle(
                       letterSpacing: 1.5,
@@ -43,13 +43,17 @@ class _HomeState extends State<Home> {
                 ),
                 actions: <Widget>[
                   TextButton.icon(
-                    icon: Icon(Icons.exit_to_app),
+                    icon: Icon(
+                      Icons.exit_to_app,
+                      color: Colors.black,
+                    ),
                     label: Text(
                       'Logout',
                       style: GoogleFonts.mcLaren(
                         textStyle: TextStyle(
                           fontSize: 18,
                           letterSpacing: 1,
+                          color: Colors.black,
                         ),
                       ),
                     ),
@@ -61,8 +65,10 @@ class _HomeState extends State<Home> {
               ),
               drawer: Sidebar(),
               body: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 child: Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,7 +87,13 @@ class _HomeState extends State<Home> {
                         height: 10,
                       ),
                       Expanded(
-                        child: ClientList(),
+                        child: ListView(
+                          children: [
+                            ClientList(
+                              ClientTile(),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

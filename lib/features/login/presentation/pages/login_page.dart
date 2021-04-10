@@ -41,14 +41,17 @@ class _LoginState extends State<Login> {
               ),
               actions: <Widget>[
                 TextButton.icon(
-                  icon: Icon(Icons.person),
+                  icon: Icon(
+                    Icons.person,
+                    color: Colors.black,
+                  ),
                   label: Text(
                     'Sign Up',
                     style: GoogleFonts.mcLaren(
                       textStyle: TextStyle(
                         fontSize: 18,
                         letterSpacing: 1,
-                        //color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),

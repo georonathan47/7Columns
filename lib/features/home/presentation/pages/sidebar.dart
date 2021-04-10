@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/usecases/auth_service.dart';
 import '../../../settings/presentation/pages/edit_profile.dart';
+import '../../../settings/presentation/pages/settings.dart';
 
 class Sidebar extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -25,27 +26,27 @@ class Sidebar extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 2),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            width: 4,
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                          ),
-                          color: Colors.amber[400],
-                        ),
-                        child: IconButton(
-                          icon: Icon(Icons.edit),
-                          color: Colors.black,
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   bottom: 0,
+                    //   right: 0,
+                    //   child: Container(
+                    //     height: 30,
+                    //     width: 30,
+                    //     decoration: BoxDecoration(
+                    //       shape: BoxShape.circle,
+                    //       border: Border.all(
+                    //         width: 4,
+                    //         color: Theme.of(context).scaffoldBackgroundColor,
+                    //       ),
+                    //       color: Colors.amber[400],
+                    //     ),
+                    //     child: IconButton(
+                    //       icon: Icon(Icons.edit),
+                    //       color: Colors.black,
+                    //       onPressed: () {},
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -95,7 +96,13 @@ class Sidebar extends StatelessWidget {
               "Settings",
               style: TextStyle(fontSize: 20),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Settings(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.notifications_outlined),
@@ -112,14 +119,16 @@ class Sidebar extends StatelessWidget {
                   child: Text(
                     "9+",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
             onTap: () {},
           ),
-          Divider(),
+          Divider(thickness: 3),
           ListTile(
             leading: Icon(Icons.exit_to_app_outlined),
             title: Text(

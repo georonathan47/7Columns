@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.amber,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: /*Home(),*/Wrapper(),
+        home: Wrapper(),
       ),
     );
   }

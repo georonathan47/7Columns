@@ -1,18 +1,32 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:seven__columns/core/usecases/database.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../../../core/usecases/database.dart';
 
-// ignore: must_be_immutable
-class Profile extends StatelessWidget {
-//   @override
-//   _ProfileState createState() => _ProfileState();
-// }
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
 
-// class _ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile> {
   bool showPassword = false;
+
+  final DatabaseService _db = DatabaseService();
+  final imagePicker = ImagePicker();
+  File _image;
+  Future getImage() async {
+    final image = await imagePicker.getImage(source: ImageSource.gallery);
+    // ignore: missing_return
+    setState((_) {
+      _image = File(image.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.amber[500],
@@ -89,9 +103,12 @@ class Profile extends StatelessWidget {
                           color: Colors.amber[400],
                         ),
                         child: IconButton(
-                          icon: Icon(Icons.edit),
-                          color: Colors.yellow[500],
-                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit,
+                            color: Colors.amber[500],
+                          ),
+                          color: Colors.black,
+                          onPressed: getImage,
                         ),
                       ),
                     ),
@@ -130,7 +147,7 @@ class Profile extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    await DatabaseService(/*uid: person.uid*/).updateUserData(
+                    await _db.updateUserData(
                       "",
                       "",
                       233,
@@ -193,7 +210,6 @@ Widget buildTextField(
   );
 }
 
-void setState(bool Function(State) param0) {
-}
+void setState(bool Function(State) param0) {}
 
 //void setState(bool Function(_ProfileState) param0) {}

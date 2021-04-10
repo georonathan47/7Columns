@@ -30,7 +30,6 @@ class DatabaseService {
 
   // get ClientInfo stream
   Stream<List<Client>> get clients {
-    return clientCollection.snapshots()
-      .map(_clientListFromSnapshot);
+    return clientCollection.snapshots().map(_clientListFromSnapshot);
   }
 }

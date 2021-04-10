@@ -5,6 +5,8 @@ import '../../../../core/shared/clients.dart';
 import 'client_tile.dart';
 
 class ClientList extends StatefulWidget {
+  ClientList(ClientTile clientTile);
+
   @override
   _ClientListState createState() => _ClientListState();
 }
