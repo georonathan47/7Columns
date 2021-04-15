@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toast/toast.dart';
 
 import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
-//import '../../../home/presentation/pages/homepage_main.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggleView;
@@ -156,11 +156,25 @@ class _SignUpState extends State<SignUp> {
                                                   .registerEmailandPassword(
                                                       email, password);
                                               if (result == null) {
-                                                setState(() => error =
-                                                        'Invalid email and/or password\n Please enter valid credentials'
-                                                    //loading = false;
-                                                    );
-                                                setState(() => loading = false);
+                                                setState(() {
+                                                  error =
+                                                      'Invalid email and/or password\n Please enter valid credentials';
+                                                  loading = false;
+                                                });
+                                                Toast.show(
+                                                  "Invalid User Credentials",
+                                                  context,
+                                                  duration: Toast.LENGTH_LONG,
+                                                  gravity: Toast.BOTTOM,
+                                                );
+                                              } else {
+                                                Toast.show(
+                                                  'Account created for ' +
+                                                      email,
+                                                  context,
+                                                  duration: Toast.LENGTH_LONG,
+                                                  gravity: Toast.BOTTOM,
+                                                );
                                               }
                                             }
                                           },

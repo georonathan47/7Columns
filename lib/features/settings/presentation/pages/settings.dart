@@ -20,7 +20,6 @@ class _SettingsState extends State<Settings> {
               textStyle: TextStyle(
                 letterSpacing: 1.5,
                 color: Colors.black,
-                // fontWeight: FontWeight.w500,
               ),
             ),
           ),
@@ -29,9 +28,9 @@ class _SettingsState extends State<Settings> {
         body: Container(
           color: Colors.white,
           child: ListView(
-            children: [
+            children: <Widget> [
               Column(
-                children: [
+                children: <Widget>[
                   SizedBox(height: 30),
                   Row(
                     children: <Widget>[

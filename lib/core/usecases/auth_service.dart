@@ -24,7 +24,7 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User person = result.user;
-      
+
       // create a new document in the database for the user with the uid
       await DatabaseService(uid: person.uid).updateUserData(
         "7Columns", //! dummy data
@@ -32,6 +32,15 @@ class AuthService {
         233,
       );
       return _userFromFirebaseUser(person);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "weak-password") {
+        print("");
+      } else if (e.code == "email-already-in-use") {
+        print('Account already in use');
+      } else {
+        print('An unknown error has occurred!\t\t\t Please try again later!');
+      }
+      return null;
     } catch (e) {
       print(e.toString());
       return null;
@@ -45,8 +54,15 @@ class AuthService {
           email: email, password: password);
       User person = result.user; //changedfrom FirebaseUser to User
       return _userFromFirebaseUser(person);
-    } catch (e) {
-      print(e.toString());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found! \nTry creating a New Account!");
+      } else if (e.code == "wrong-password") {
+        print(
+            'Invalid password provided... \nPlease try again with valid credentials');
+      } else {
+        print('An unknown error has occurred!\n Please try again later!');
+      }
       return null;
     }
   }

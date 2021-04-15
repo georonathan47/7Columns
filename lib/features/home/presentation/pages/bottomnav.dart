@@ -19,7 +19,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
       color: Colors.amber[500],
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white54,
       buttonBackgroundColor: Colors.amber[500],
       height: 45,
       index: 2, //sets default selected icon

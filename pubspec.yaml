@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
 
   flutter_spinkit: ^5.0.0
-  cloud_firestore: ^0.16.0+1
+  cloud_firestore: 
   cupertino_icons: ^1.0.0
 
   flutter_bloc: ^6.1.2
@@ -20,11 +20,12 @@ dependencies:
 
   google_fonts: ^1.1.2
   firebase_auth:   
-  firebase_core: ^0.7.0
   firebase: ^8.0.0
 
   path_provider: 
   provider: ^4.3.3
+  flex_color_scheme:
+  toast: ^0.1.5
   
   shared_preferences: ^0.5.12+4
   curved_navigation_bar: 

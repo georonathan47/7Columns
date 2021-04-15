@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toast/toast.dart';
 
 import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
@@ -189,12 +190,23 @@ class _LoginState extends State<Login> {
                                                   .signInWithEmailandPassword(
                                                       email, password);
                                               if (result == null) {
-                                                setState(
-                                                  () {
-                                                    loading = false;
-                                                    error =
-                                                        'Invalid email and/or password \n Please enter valid credentials';
-                                                  },
+                                                setState(() {
+                                                  loading = false;
+                                                  error =
+                                                      'Invalid email and/or password \n Please enter valid credentials';
+                                                });
+                                                Toast.show(
+                                                  "Invalid User Credentials",
+                                                  context,
+                                                  duration: Toast.LENGTH_LONG,
+                                                  gravity: Toast.BOTTOM,
+                                                );
+                                              } else {
+                                                Toast.show(
+                                                  "Account created for " + email,
+                                                  context,
+                                                  duration: Toast.LENGTH_LONG,
+                                                  gravity: Toast.BOTTOM,
                                                 );
                                               }
                                             }

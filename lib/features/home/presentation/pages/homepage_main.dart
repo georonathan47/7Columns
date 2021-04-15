@@ -7,6 +7,8 @@ import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
 import '../../../../core/usecases/database.dart';
 import 'bottomnav.dart';
+// import 'client_list.dart';
+// import 'client_tile.dart';
 import 'client_list.dart';
 import 'client_tile.dart';
 import 'sidebar.dart';
@@ -86,11 +88,15 @@ class _HomeState extends State<Home> {
                       SizedBox(
                         height: 10,
                       ),
-                      Expanded(
+                      Container(
                         child: ListView(
                           children: [
-                            ClientList(
-                              ClientTile(),
+                            Column(
+                              children: <Widget>[
+                                ClientList(
+                                  ClientTile(),
+                                ),
+                              ],
                             ),
                           ],
                         ),
