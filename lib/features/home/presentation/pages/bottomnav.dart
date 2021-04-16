@@ -19,7 +19,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
       color: Colors.amber[500],
-      backgroundColor: Colors.white54,
+      backgroundColor: Colors.white38,
       buttonBackgroundColor: Colors.amber[500],
       height: 45,
       index: 2, //sets default selected icon
@@ -28,13 +28,13 @@ class _BottomNavState extends State<BottomNav> {
           //! registered architects
           Icons.architecture,
           size: 20,
-          color: Colors.white,
+          color: Colors.black,
         ),
         Icon(
           //! favorited works by user
           Icons.favorite,
           size: 20,
-          color: Colors.white,
+          color: Colors.black,
         ),
         Icon(
           //! see all[most] works, like, leave a review
@@ -46,13 +46,13 @@ class _BottomNavState extends State<BottomNav> {
           //! user reviews section
           Icons.book,
           size: 20,
-          color: Colors.white,
+          color: Colors.black,
         ),
         Icon(
           //! settings, edit profile, etc.
           Icons.settings,
           size: 20,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ],
       animationDuration: Duration(microseconds: 200),

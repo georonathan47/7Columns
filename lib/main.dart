@@ -19,10 +19,6 @@ class MyApp extends StatelessWidget {
     return StreamProvider<Person>.value(
       value: AuthService().user,
       child: MaterialApp(
-        // theme: ThemeData(
-        //   primarySwatch: Colors.amber,
-        //   visualDensity: VisualDensity.adaptivePlatformDensity,
-        // ),
         theme: FlexColorScheme.light(scheme: FlexScheme.gold).toTheme,
         darkTheme: FlexColorScheme.dark(scheme: FlexScheme.amber).toTheme,
         home: Wrapper(),

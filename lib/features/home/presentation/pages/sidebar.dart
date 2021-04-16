@@ -17,44 +17,49 @@ class Sidebar extends StatelessWidget {
             accountEmail: Text("Nathan James"),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Stack(
-                  children: <Widget>[
-                    Image.asset(
-                      "assets/jonathan.jpg",
-                      width: 90,
-                      height: 90,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: 2),
-                    // Positioned(
-                    //   bottom: 0,
-                    //   right: 0,
-                    //   child: Container(
-                    //     height: 30,
-                    //     width: 30,
-                    //     decoration: BoxDecoration(
-                    //       shape: BoxShape.circle,
-                    //       border: Border.all(
-                    //         width: 4,
-                    //         color: Theme.of(context).scaffoldBackgroundColor,
-                    //       ),
-                    //       color: Colors.amber[400],
-                    //     ),
-                    //     child: IconButton(
-                    //       icon: Icon(Icons.edit),
-                    //       color: Colors.black,
-                    //       onPressed: () {},
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
+                child: Container(
+                  color: Colors.amber,
+                  width: 130,
+                  height:  130,
+                  child: Stack(
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/jonathan.jpg",
+                        width: 120,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 2),
+                      // Positioned(
+                      //   bottom: 0,
+                      //   right: 0,
+                      //   child: Container(
+                      //     height: 30,
+                      //     width: 30,
+                      //     decoration: BoxDecoration(
+                      //       shape: BoxShape.circle,
+                      //       border: Border.all(
+                      //         width: 4,
+                      //         color: Theme.of(context).scaffoldBackgroundColor,
+                      //       ),
+                      //       color: Colors.amber[400],
+                      //     ),
+                      //     child: IconButton(
+                      //       icon: Icon(Icons.edit),
+                      //       color: Colors.black,
+                      //       onPressed: () {},
+                      //     ),
+                      //   ),
+                      // ),
+                    ],
+                  ),
                 ),
               ),
             ),
             decoration: BoxDecoration(
               color: Colors.amber[250],
               image: DecorationImage(
-                image: AssetImage("assets/pesuedo.jpg"),
+                image: AssetImage("assets/background.png"),
                 fit: BoxFit.cover,
               ),
             ),

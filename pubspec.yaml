@@ -15,24 +15,22 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   flutter_bloc: ^6.1.2
-  equatable: ^1.2.6
-  dartz: ^0.9.2
-
-  google_fonts: ^1.1.2
+  equatable:   
+  dartz: 
+  
+  google_fonts:   
   firebase_auth:   
   firebase: ^8.0.0
 
   path_provider: 
-  provider: ^4.3.3
+  provider:
   flex_color_scheme:
   toast: ^0.1.5
   
-  shared_preferences: ^0.5.12+4
+  shared_preferences: 
   curved_navigation_bar: 
   image_picker: 
-  #connectivity: ^2.0.2
-  #http: ^0.12.2
-  #get_it: ^5.0.6
+
 
 dev_dependencies:
   flutter_test:

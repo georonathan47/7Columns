@@ -11,7 +11,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  bool showPassword = false;
+  final bool showPassword = false;
 
   final DatabaseService _db = DatabaseService();
   final imagePicker = ImagePicker();
@@ -148,6 +148,7 @@ class _ProfileState extends State<Profile> {
                 ElevatedButton(
                   onPressed: () async {
                     await _db.updateUserData(
+                      "",
                       "",
                       "",
                       233,

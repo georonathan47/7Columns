@@ -68,29 +68,36 @@ class _HomeState extends State<Home> {
               drawer: Sidebar(),
               body: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 15,
+                  horizontal: 15,
+                  vertical: 10,
                 ),
                 child: Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Text(
-                        "Sample Designs",
-                        style: GoogleFonts.mcLaren(
-                          textStyle: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                      Center(
+                        child: Text(
+                          "Sample Designs",
+                          style: GoogleFonts.mcLaren(
+                            textStyle: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontStyle: FontStyle.italic,
+                            ),
                           ),
                         ),
+                      ),
+                      Divider(
+                        thickness: 1.5,
+                        color: Colors.black,
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Container(
+                      Expanded(
                         child: ListView(
-                          children: [
+                          children: <Widget>[
                             Column(
                               children: <Widget>[
                                 ClientList(

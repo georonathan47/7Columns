@@ -29,6 +29,7 @@ class AuthService {
       await DatabaseService(uid: person.uid).updateUserData(
         "7Columns", //! dummy data
         "$email",
+        "********",
         233,
       );
       return _userFromFirebaseUser(person);
