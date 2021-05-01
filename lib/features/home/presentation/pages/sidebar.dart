@@ -4,8 +4,12 @@ import '../../../../core/usecases/auth_service.dart';
 import '../../../settings/presentation/pages/edit_profile.dart';
 import '../../../settings/presentation/pages/settings.dart';
 
+// ignore: must_be_immutable
 class Sidebar extends StatelessWidget {
   final AuthService _auth = AuthService();
+  String email;
+  Sidebar({this.email});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -13,14 +17,14 @@ class Sidebar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("georonathan47"),
+            accountName: Text(email),
             accountEmail: Text("Nathan James"),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Container(
                   color: Colors.amber,
                   width: 130,
-                  height:  130,
+                  height: 130,
                   child: Stack(
                     children: <Widget>[
                       Image.asset(

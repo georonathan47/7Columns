@@ -7,7 +7,8 @@ import '../../../../core/usecases/auth_service.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggleView;
-  SignUp({this.toggleView});
+  String emails;
+  SignUp({this.toggleView, this.emails});
 
   @override
   _SignUpState createState() => _SignUpState();

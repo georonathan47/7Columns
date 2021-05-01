@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                       SizedBox(
                         height: 10,
                       ),
-                      Expanded(
+                      Expanded( 
                         child: ListView(
                           children: <Widget>[
                             Column(
