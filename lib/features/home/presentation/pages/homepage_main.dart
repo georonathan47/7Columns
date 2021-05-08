@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.white54,
               appBar: AppBar(
                 //centerTitle: true,
-                backgroundColor: Colors.amberAccent,
+                //backgroundColor: Colors.amberAccent,
                 elevation: 0.5,
                 title: Text(
                   "Home",

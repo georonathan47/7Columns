@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:seven__columns/core/shared/clients.dart';
+import 'package:seven_columns/core/shared/clients.dart';
 
 class DatabaseService {
   final String uid;
@@ -9,7 +9,8 @@ class DatabaseService {
   final CollectionReference clientCollection =
       FirebaseFirestore.instance.collection('clients');
 
-  Future updateUserData(String name, String email, String password, int contact) async {
+  Future updateUserData(
+      String name, String email, String password, int contact) async {
     return await clientCollection.doc(uid).set({
       'name': name,
       'email': email,

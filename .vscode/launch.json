@@ -17,7 +17,7 @@
       "program": "lib/main.dart"
     },
     {
-      "name": "seven__columns",
+      "name": "seven_columns",
       "request": "launch",
       "type": "dart"
     }

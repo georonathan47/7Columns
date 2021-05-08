@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:seven__columns/core/usecases/database.dart';
+// import 'package:seven_columns/core/usecases/database.dart';
 
 import '../../../../core/shared/clients.dart';
 
@@ -39,7 +39,6 @@ class ClientTile extends StatelessWidget {
                     ),
                   ),
                 );
-                
               },
             ),
           ),

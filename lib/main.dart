@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         theme: FlexColorScheme.light(scheme: FlexScheme.gold).toTheme,
-        darkTheme: FlexColorScheme.dark(scheme: FlexScheme.amber).toTheme,
+        darkTheme: FlexColorScheme.dark(scheme: FlexScheme.gold).toTheme,
         home: Wrapper(),
       ),
     );

@@ -1,4 +1,4 @@
-package com.example.seven__columns
+package com.example.seven_columns
 
 import io.flutter.embedding.android.FlutterActivity
 

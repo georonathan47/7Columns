@@ -1,4 +1,4 @@
-# seven__columns
+# seven_columns
 
 A new Flutter project.
 

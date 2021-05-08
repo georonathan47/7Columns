@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:seven__columns/core/shared/user.dart';
-import 'package:seven__columns/core/usecases/database.dart';
-// import 'package:seven__columns/core/shared/user.dart';
+import 'package:seven_columns/core/shared/user.dart';
+import 'package:seven_columns/core/usecases/database.dart';
+// import 'package:seven_columns/core/shared/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

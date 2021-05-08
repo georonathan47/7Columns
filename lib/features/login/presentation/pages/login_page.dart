@@ -4,7 +4,7 @@ import 'package:toast/toast.dart';
 
 import '../../../../core/shared/loading.dart';
 import '../../../../core/usecases/auth_service.dart';
-// import 'package:seven__columns/features/home/presentation/pages/homepage_main.dart';
+// import 'package:seven_columns/features/home/presentation/pages/homepage_main.dart';
 
 class Login extends StatefulWidget {
   final Function toggleView;
@@ -203,7 +203,8 @@ class _LoginState extends State<Login> {
                                                 );
                                               } else {
                                                 Toast.show(
-                                                  "Account created for " + email,
+                                                  "Account created for " +
+                                                      email,
                                                   context,
                                                   duration: Toast.LENGTH_LONG,
                                                   gravity: Toast.BOTTOM,
